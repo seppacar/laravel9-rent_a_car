@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//Home controller
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\AdminPanel\HomeController as AdminHome;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +24,7 @@ Route::get('index', [HomeController::class, 'index'])->name('index');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+//Admin Panel Routes
+
+Route::get('/admin', [AdminHome::class, 'index'])->name('admin');
