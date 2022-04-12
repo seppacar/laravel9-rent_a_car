@@ -3,32 +3,34 @@
 @section('title', 'Category List')
 
 @section('content')
+<!--TODO: Add Image of the category if present -->
 <div class="card">
     <div class="card-header">
-        Add Category
+        Edit Category: {{$data->title}}
     </div>
     <div class="card-body">
-    <form role="form" action="/admin/category/store"  method="post"> 
+    <form role="form" action="/admin/category/update/{{$data->id}}"  method="post"> 
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+            <input type="text" class="form-control" name="title" id="title" value="{{$data->title}}">
         </div>
         <div class="mb-3">
             <label for="kewyords" class="form-label">Keywords</label>
-            <input type="text" class="form-control" name="keywords" id="keywords" placeholder="Keywords">
+            <input type="text" class="form-control" name="keywords" id="keywords" value="{{$data->keywords}}">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" name="description" id="description" placeholder="Description">
+            <input type="text" class="form-control" name="description" id="description" value="{{$data->description}}">
         </div>
         <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" name="image" id="image">
-            <label class="custom-file-label" for="image">Choose Category Image</label>
+            <input type="file" class="custom-file-input" name="image" id="image" value="{{$data->image}}">
+            <label class="custom-file-label" for="image">{{$data->image}}</label>
         </div>
         <div class="mb-3">
             <label for="status" class="form-label">Status</label>
             <select class="form-control" name="status" id="status">
+                <option selected>{{$data->status}}</option>
                 <option>True</option>
                 <option>False</option>>
             </select>
@@ -37,7 +39,7 @@
                                         <span class="icon text-gray-600">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
-                                        <span class="text">Create</span>
+                                        <span class="text">Update</span>
                                     </a>
     </form>
     </div>

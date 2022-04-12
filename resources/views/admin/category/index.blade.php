@@ -7,7 +7,7 @@
 <div class="card shadow mb-4 table-responsive">
     <div class="card-header py-3">
         <h5 class="m-0 font-weight-bold text-primary">Categories</h5>
-        <a href="create" class="float-right btn btn-success btn-icon-split">
+        <a href="category/create" class="float-right btn btn-success btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
@@ -48,7 +48,6 @@
     @endforeach
     </tbody>
     </table>
-
 </div>
 @endsection
 
