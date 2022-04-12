@@ -60,6 +60,7 @@ class CategoryController extends Controller
     public function show(Category $category, $id)
     {
         $data = Category::find($id);
+        $data->keywords = explode(',', $data->keywords);
         return view('admin.category.show', ['data' => $data]);
     }
 

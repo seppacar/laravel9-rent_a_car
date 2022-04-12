@@ -14,8 +14,9 @@
     Category Keywords
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{$data->keywords}}</li>
-
+    @foreach($data->keywords as $rs)
+        <li class="list-group-item">{{$rs}}</li>
+    @endforeach
   </ul>
   <div class="card-header">
     Category Description
