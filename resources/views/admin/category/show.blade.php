@@ -28,7 +28,12 @@
     Category Image
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{$data->image}}</li>
+    <li class="list-group-item">
+            @if ($data->image)
+            <img src="{{Storage::url($data->image)}}">
+            @else
+                No Image
+            @endif</li>
   </ul>
   <div class="card-header">
     Category Status
