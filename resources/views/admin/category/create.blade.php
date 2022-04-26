@@ -12,7 +12,7 @@
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+            <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
         </div>
         <div class="mb-3">
             <label for="kewyords" class="form-label">Keywords</label>
