@@ -8,7 +8,7 @@
         Add Category
     </div>
     <div class="card-body">
-    <form role="form" action="/admin/category/store"  method="post" enctype='multipart/form-data'> 
+    <form role="form" action="{{route('admin.category.store')}}"  method="post" enctype='multipart/form-data'> 
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>

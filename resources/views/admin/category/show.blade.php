@@ -30,7 +30,15 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
             @if ($data->image)
-            <img src="{{Storage::url($data->image)}}">
+            <div>
+            <img src="{{Storage::url($data->image)}}"  width="200" height="auto">
+            <a href="{{Storage::url($data->image)}}" class="btn btn-secondary btn-icon-split">
+              <span class="icon text-white-50">
+                  <i class="fas fa-arrow-right"></i>
+              </span>
+              <span class="text">See Max Resolution</span>
+          </a>
+            </div>
             @else
                 No Image
             @endif</li>

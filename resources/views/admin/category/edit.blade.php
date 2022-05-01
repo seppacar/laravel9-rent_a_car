@@ -9,7 +9,7 @@
         Edit Category: {{$data->title}}
     </div>
     <div class="card-body">
-    <form role="form" action="/admin/category/update/{{$data->id}}"  method="post"> 
+    <form role="form" action="{{route('admin.category.update', ['id'=>$rs->id])}}"  method="post"> 
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
