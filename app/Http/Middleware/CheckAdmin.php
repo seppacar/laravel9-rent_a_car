@@ -18,10 +18,14 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $userRoles = Auth::user()->roles->pluck('name');
-        if (!$userRoles->contains('admin')){
-            return redirect(route('admin.login'))->with('error', 'You do not have permission to view this page');
+        if (Auth::user() != null){
+            $userRoles = Auth::user()->roles->pluck('name');
+            if (!$userRoles->contains('admin')){
+                return redirect(route('admin.login'))->with('error', 'You do not have permission to view this page');
+            }
+            return $next($request);
         }
-        return $next($request);
+        else
+        return redirect(route('admin.login'))->with('error', 'You should login to see this page');
     }
 }
