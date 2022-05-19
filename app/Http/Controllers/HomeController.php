@@ -17,18 +17,20 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index()
-    {   
+    {
         $car = Car::limit(6)->get();
         return view('home.index', ['car' => $car]);
     }
     // Return setting data staticly
-    public static function getSetting(){
+    public static function getSetting()
+    {
         $setting = Setting::first();
         return $setting;
     }
 
     //Return Main Category List
-    public static function mainCategoryList(){
+    public static function mainCategoryList()
+    {
         return Category::where('parent_id', '=', '0')->with('children')->get();
     }
 
@@ -38,9 +40,9 @@ class HomeController extends Controller
         $car = Car::find($id);
         $image = Image::where('car_id', $id)->get();
         $reviews = Comment::where('car_id', $id)->where('status', 'True')->get();
-        return view('home.car_single', ['car' => $car, 'image' => $image, 'reviews'=>$reviews]);
+        return view('home.car_single', ['car' => $car, 'image' => $image, 'reviews' => $reviews]);
     }
-    //All cars
+    //Return all cars
     public function carAll()
     {
         $car = Car::where('status', 'True')->paginate(9);
@@ -52,7 +54,7 @@ class HomeController extends Controller
     {
         echo Car::where('status', 'True')->count();
     }
-    
+
     //Return vehicles related to a category
     public function getCars($category_id)
     {
@@ -60,18 +62,21 @@ class HomeController extends Controller
         return view('home.car_multiple', ['car' => $car]);
     }
 
-    // About us page
-    public function about(){
+    //About us page
+    public function about()
+    {
         $about = Setting::first()->aboutus;
-        return view('home.about', ['about'=>$about]);
+        return view('home.about', ['about' => $about]);
     }
     //Contact page
-    public function contact(){
+    public function contact()
+    {
         $setting = Setting::first();
-        return view('home.contact', ['setting'=>$setting]);
+        return view('home.contact', ['setting' => $setting]);
     }
-    //store message
-    public function storemessage(Request $request){
+    //Store message
+    public function storemessage(Request $request)
+    {
         $data = new Message;
         $data->name = $request->input('name');
         $data->email = $request->input('email');
@@ -83,17 +88,20 @@ class HomeController extends Controller
         return redirect()->route('contact')->with('info', 'Your message has been sent, Thank You.');
     }
     //References page
-    public function references(){
+    public function references()
+    {
         $setting = Setting::first();
-        return view('home.references', ['setting'=>$setting]);
+        return view('home.references', ['setting' => $setting]);
     }
     //FAQ page
-    public function faq(){
+    public function faq()
+    {
         $data = Faq::all();
-        return view('home.faq', ['data'=>$data]);
+        return view('home.faq', ['data' => $data]);
     }
-    //store comment
-    public function storecomment(Request $request){
+    //Store comment
+    public function storecomment(Request $request)
+    {
         $data = new Comment;
         $data->user_id = auth()->id();
         $data->car_id = $request->input('car_id');
@@ -102,11 +110,12 @@ class HomeController extends Controller
         $data->rate = $request->input('rate');
         $data->ip = request()->ip();
         $data->save();
-        return redirect()->route('car_single', ['id'=>$request->car_id])->with('info', 'Your comment has been sent, Thank You.');
+        return redirect()->route('car_single', ['id' => $request->car_id])->with('info', 'Your comment has been sent, Thank You.');
     }
 
     //Logout controller
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -122,10 +131,10 @@ class HomeController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-    
+
         if (auth()->attempt($credentials)) {
             $request->session()->regenerate();
-    
+
             return redirect()->intended('admin');
         }
         return back()->with([
@@ -133,7 +142,8 @@ class HomeController extends Controller
         ])->onlyInput('email');
     }
 
-    public static function getUserCount(){
+    public static function getUserCount()
+    {
         echo User::all()->count();
     }
 }

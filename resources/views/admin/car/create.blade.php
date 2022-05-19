@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Category List')
+@section('title', 'Car Create')
 
 @section('content')
 
