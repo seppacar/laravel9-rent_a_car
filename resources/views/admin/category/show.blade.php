@@ -10,6 +10,12 @@
                                     {{$data->title}}
                                 </div>
                                 <div class="card-body">
+                                  <div class="card-header">
+                                    Parent Category
+                                  </div>
+                                  <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($data, $data->title)}}</li>
+
                                 <div class="card-header">
     Category Keywords
   </div>

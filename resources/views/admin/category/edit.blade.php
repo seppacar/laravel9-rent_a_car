@@ -9,8 +9,17 @@
         Edit Category: {{$data->title}}
     </div>
     <div class="card-body">
-    <form role="form" action="{{route('admin.category.update', ['id'=>$rs->id])}}"  method="post"> 
+    <form role="form" action="{{route('admin.category.update', ['id'=>$data->id])}}"  method="post"> 
         @csrf
+        <div class="mb-3">
+            <label for="parent_id" class="form-label">Parent Category</label>
+            <select name="parent_id" class="form-control">
+                <option value="0" selected="selected">Main Category</option>
+                @foreach ($data_list as $rs)
+                    <option value="{{$rs->id}}" @if ($rs->id == $data->parent_id) selected="selected" @endif>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title)}}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" name="title" id="title" value="{{$data->title}}">

@@ -8,18 +8,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    protected $appends = [
-        'getParentsTree'
-    ];
-
-    public static function getParentsTree($category, $title){
-        if ($category->parent_id == 0){
-            return $title;
-        }
-        $parent = Category::find($category->parent_id);
-        $title = $parent->title . '>' . $title;
-        return CategoryController::getParentsTree($parent, $title);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -40,8 +28,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        $data = Category::all();
-        return view('admin.category.create', ['data' => $data]);
+        return view('admin.category.create');
     }
 
     /**
@@ -54,7 +41,7 @@ class CategoryController extends Controller
     {
         //Get data from POST request and store to database
         $data = new Category();
-        $data->parent_id = $request->parent_id;
+        $data->parent_id = 0;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
@@ -89,8 +76,7 @@ class CategoryController extends Controller
     {
         //
         $data = Category::find($id);
-        $data_list = Category::all();
-        return view('admin.category.edit',['data' => $data, 'data_list' => $data_list]);
+        return view('admin.category.edit',['data' => $data]);
     }
 
     /**
@@ -105,7 +91,7 @@ class CategoryController extends Controller
         //
                 //Find the data in category table and update
                 $data = Category::find($id);
-                $data->parent_id = $request->parent_id;
+                $data->parent_id = 0;
                 $data->title = $request->title;
                 $data->keywords = $request->keywords;
                 $data->description = $request->description;
