@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\CategoryController;
+use App\Http\Controllers\AdminPanel\CarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHome;
@@ -31,6 +32,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHome::class, 'index'])->name('index');
     //Admin Panel Category Routes
     Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/delete/{id}', 'destroy')->name('destroy');
+        Route::get('/show/{id}', 'show')->name('show');
+    });
+
+    //Admin Panel Car Routes
+    Route::prefix('/car')->name('car.')->controller(CarController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
