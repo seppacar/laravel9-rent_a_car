@@ -17,7 +17,7 @@
                                           Category
                                         </div>
                                         <ul class="list-group list-group-flush">
-                                              <li class="list-group-item">{{$category_name}}</li>
+                                              <li class="list-group-item">{{$data->category->title}}</li>
                                       </div>
                                       <div>
                                         <div class="card-header">
@@ -74,28 +74,28 @@
                                         Daily Price (24hrs)
                                       </div>
                                       <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">{{$data->detail}}</li>
+                                            <li class="list-group-item">{{$data->price}}</li>
                                     </div>
                                     <div>
                                       <div class="card-header">
                                         Seat Count
                                       </div>
                                       <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">{{$data->detail}}</li>
+                                            <li class="list-group-item">{{$data->seats}}</li>
                                     </div>
                                     <div>
                                       <div class="card-header">
                                         Door Count
                                       </div>
                                       <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">{{$data->detail}}</li>
+                                            <li class="list-group-item">{{$data->doors}}</li>
                                     </div>
                                     <div>
                                       <div class="card-header">
                                         Boot Capacity
                                       </div>
                                       <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">{{$data->detail}}</li>
+                                            <li class="list-group-item">{{$data->boot_capacity}}</li>
                                     </div>
                                     <div>
                                       <div class="card-header">

@@ -78,9 +78,8 @@ class CarController extends Controller
     public function show(Car $car, $id)
     {
         $data = Car::find($id);
-        $category_name = Category::find($data->category_id)->title;
         $data->keywords = explode(',', $data->keywords);
-        return view('admin.car.show', ['data' => $data, 'category_name' => $category_name]);
+        return view('admin.car.show', ['data' => $data]);
     }
 
     /**
