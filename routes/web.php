@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\CarController;
+use App\Http\Controllers\AdminPanel\ImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHome;
@@ -50,5 +51,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/delete/{id}', 'destroy')->name('destroy');
         Route::get('/show/{id}', 'show')->name('show');
+    });
+    //Admin Panel Image Routes
+    Route::prefix('/image')->name('image.')->controller(ImageController::class)->group(function () {
+        Route::get('/{pid}', 'index')->name('index');
+        Route::get('/create/{pid}', 'create')->name('create');
+        Route::post('/store/{pid}', 'store')->name('store');
+        Route::get('/delete/{id}', 'destroy')->name('destroy');
     });
 });

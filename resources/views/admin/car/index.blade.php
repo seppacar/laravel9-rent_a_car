@@ -22,6 +22,7 @@
         <th scope="col">Keywords</th>
         <th scope="col">Description</th>
         <th scope="col">Image</th>
+        <th scope="col">Image Gallery</th>
         <th scope="col">Details</th>
         <th scope="col">Price</th>
         <th scope="col">Specifications</th>
@@ -47,6 +48,7 @@
                 No Image
             @endif
         </td>
+        <td><a href="{{route('admin.image.index', ['pid' => $rs->id])}}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100, height=700')"><img src="/img/bootstrap-icons/card-image.svg" width="32" height="32"> </a></td>
         <td>{{$rs->detail}}</td>
         <td>{{$rs->price}}</td>
         <td>TODO: SPECIFICATIONS POPUP</td>

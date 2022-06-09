@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class CarController extends Controller
 {
@@ -143,6 +145,9 @@ class CarController extends Controller
     {
         //
         $data = Car::find($id);
+        if ($data->image && Storage::disk('public')->exists($data->image)){
+            Storage::delete($data->image);
+        };
         $data->delete();
         return redirect('admin/car');
     }
