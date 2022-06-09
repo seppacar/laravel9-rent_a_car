@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Car;
+
 
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        return view('home.index');
+        $car = Car::limit(6)->get();
+        return view('home.index', ['car'=>$car]);
     }
+
 }
