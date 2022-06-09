@@ -43,7 +43,19 @@
 
                 <div class="mb-3">
                     <label for="detail" class="form-label">Detail</label>
-                    <input type="text" class="form-control" name="detail" id="detail" placeholder="Details">
+                    <textarea type="text" class="form-control" name="detail" id="detail">
+                        
+                    </textarea>
+                <script>
+                        ClassicEditor
+                                .create( document.querySelector( '#detail' ) )
+                                .then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+                </script>
                 </div>
 
               </div>

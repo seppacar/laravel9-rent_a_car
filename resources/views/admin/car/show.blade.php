@@ -45,7 +45,7 @@
                                           Detail
                                         </div>
                                         <ul class="list-group list-group-flush">
-                                              <li class="list-group-item">{{$data->detail}}</li>
+                                              <li class="list-group-item"><code>{{$data->detail}}</code></li>
                                       </div>
                                       <div>
                                         <div class="card-header">
