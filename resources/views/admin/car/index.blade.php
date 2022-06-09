@@ -11,7 +11,7 @@
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
-                                        <span class="text">Add New Category</span>
+                                        <span class="text">Add New Vehicle</span>
                                     </a>    </div>
     <table class="table table-responsive">
     <thead>
