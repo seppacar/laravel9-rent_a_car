@@ -9,7 +9,7 @@
         Edit Category: {{$data->title}}
     </div>
     <div class="card-body">
-    <form role="form" action="{{route('admin.category.update', ['id'=>$data->id])}}"  method="post"> 
+    <form role="form" action="{{route('admin.category.update', ['id'=>$data->id])}}"  method="post" enctype='multipart/form-data'> 
         @csrf
         <div class="mb-3">
             <label for="parent_id" class="form-label">Parent Category</label>
