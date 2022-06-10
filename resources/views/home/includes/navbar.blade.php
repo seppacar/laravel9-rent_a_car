@@ -12,7 +12,17 @@
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
           <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
           <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-          <li class="nav-item"><a href="car.html" class="nav-link">Cars</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Cars</a>
+             <ul class="dropdown-menu">
+              @php
+                  $mainCategories = \App\Http\Controllers\HomeController::mainCategoryList();
+              @endphp
+              @foreach ($mainCategories as $category)
+                <li><a class="dropdown-item" href="{{route('car_multiple', ['category_id'=>$category->id])}}">{{$category->title}}</a></li>
+              @endforeach
+             </ul>
+         </li>
           <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
