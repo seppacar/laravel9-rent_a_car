@@ -107,6 +107,19 @@
           </div>      
         </div>
         </div>
+      </section>
+      <!-- image gallery -->
+        <div class="carousel-car owl-carousel">
+          @foreach($image as $img)
+          <div class="item">
+            <div class="car-wrap rounded ftco-animate">
+                <div class="img rounded d-flex align-items-end" style="background-image: url({{Storage::url($img->image)}});">
+                </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+        <section class="ftco-section ftco-car-details">
         <div class="row">
             <div class="col-md-12 pills">
                       <div class="bd-example bd-example-tabs">
@@ -297,38 +310,6 @@
               </div>
     </div>
   </section>
-  <section class="ftco-section">
-    <div class="container">
-        <h2>Detailed Look</h2>
-        <p>The .thumbnail class can be used to display an image gallery.</p>
-        <p>The .caption class adds proper padding and a dark grey color to text inside thumbnails.</p>
-        <p>Click on the images to enlarge them.</p>
-        <div class="row">
-            @foreach($image as $img)
-              <div class="col-md-4">
-                <div class="thumbnail">
-                    <a href="{{Storage::url($img->image)}}" target="_blank">
-                    <img src="{{Storage::url($img->image)}}" alt="Lights" style="width:100%">
-                    <div class="caption">
-                      <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            @endforeach
-          <div class="col-md-4">
-            <div class="thumbnail">
-              <a href="/w3images/lights.jpg" target="_blank">
-                <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
-                <div class="caption">
-                  <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-  </section>
   <section class="ftco-section ftco-no-pt">
       <div class="container">
           <div class="row justify-content-center">
@@ -383,5 +364,6 @@
       </div>
       </div>
   </section>
+  <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
 
   @endsection
