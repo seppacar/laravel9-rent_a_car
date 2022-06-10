@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('title');
             $table->string('keywords')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->string('detail')->nullable();
             $table->float('price')->nullable();
