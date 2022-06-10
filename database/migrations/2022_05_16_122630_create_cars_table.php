@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('keywords')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->string('detail')->nullable();
+            $table->text('detail')->nullable();
             $table->float('price')->nullable();
             $table->string('transmission_type', 10)->nullable();
             $table->string('brand')->nullable();

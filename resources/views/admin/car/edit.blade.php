@@ -9,7 +9,7 @@
         Edit Category: {{$data->title}}
     </div>
     <div class="card-body">
-    <form role="form" action="{{route('admin.car.update', ['id'=>$data->id])}}"  method="post" enctype='multipart/form-data'> 
+    <form role="form" action="{{route('admin.car.update', ['id'=>$data->id])}}"  method="post"> 
         @csrf
         <div class="container">
             <div class="row">
@@ -42,7 +42,19 @@
 
                 <div class="mb-3">
                     <label for="detail" class="form-label">Detail</label>
-                    <input type="text" class="form-control" name="detail" id="detail" value="{{$data->detail}}">
+                    <textarea type="text" class="form-control" name="detail" id="detail">
+                        {{$data->detail}}
+                    </textarea>
+                <script>
+                        ClassicEditor
+                                .create( document.querySelector( '#detail' ) )
+                                .then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+                </script>
                 </div>
 
               </div>
@@ -98,8 +110,8 @@
                     <input type="number" class="form-control" name="horsepower" id="horsepower" value="{{$data->horsepower}}">
                 </div>
                 <div class="mb-3">
-                    <label for="engine_capacity" class="form-label">Engine Capacity</label>
-                    <input type="number" class="form-control" name="engine_capacity" id="engine_capacity" value="{{$data->engine_capacity}}">
+                    <label for="engine_capacity" class="form-label">Engine Capacity in cc</label>
+                    <input type="number" class="form-control" name="engine_capacity" id="engine_capacity" value="{{$data->engine_capacity}}" step="0.01">
                 </div>
                 <div class="mb-3">
                     <label for="status" class="form-label">Status</label>

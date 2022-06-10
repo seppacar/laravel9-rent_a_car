@@ -84,7 +84,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="boot_capacity" class="form-label">Boot Capacity</label>
-                    <input type="number" class="form-control" name="boot_capacity" id="boot_capacity" placeholder="Boot cap. in liters">
+                    <input type="number" class="form-control" name="boot_capacity" id="boot_capacity" placeholder="Boot cap. in liters" step="0.01">
                 </div>
               </div>
               <div class="col-sm">
@@ -111,7 +111,7 @@
                     <input type="number" class="form-control" name="horsepower" id="horsepower" placeholder="Horsepower of the engine">
                 </div>
                 <div class="mb-3">
-                    <label for="engine_capacity" class="form-label">Engine Capacity</label>
+                    <label for="engine_capacity" class="form-label">Engine Capacity in cc</label>
                     <input type="number" class="form-control" name="engine_capacity" id="engine_capacity" placeholder="Capacity of engine">
                 </div>
                 <div class="mb-3">
