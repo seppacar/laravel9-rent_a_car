@@ -20,6 +20,8 @@ use App\Http\Controllers\AdminPanel\HomeController as AdminHome;
 
 //Front Page Routes
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/vehicle/{id}', [HomeController::class, 'car'])->name('car_single');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
