@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Setting;
 
 
 
@@ -36,5 +37,21 @@ class HomeController extends Controller
     {
         $car = Car::where('category_id', $category_id)->paginate(9);
         return view('home.car_multiple', ['car' => $car]);
+    }
+
+    // About us page
+    public function about(){
+        $about = Setting::first()->aboutus;
+        return view('home.about', ['about'=>$about]);
+    }
+    //Contact page
+    public function contact(){
+        $setting = Setting::first();
+        return view('home.contact', ['setting'=>$setting]);
+    }
+    //References page
+    public function references(){
+        $setting = Setting::first();
+        return view('home.references', ['setting'=>$setting]);
     }
 }
