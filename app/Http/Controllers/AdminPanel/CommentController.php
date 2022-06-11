@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\AdminPanel;
 
+use App\Models\Comment;
+
 use App\Http\Controllers\Controller;
-use App\Models\Message;
 use Illuminate\Http\Request;
 
-class MessageController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function index()
     {
         //
-        $data = Message::all();
-        return view('admin.message.index', ['data'=>$data]);
+        $data = Comment::all();
+        return view('admin.comment.index', ['data'=>$data]);
     }
 
     /**
@@ -50,8 +51,8 @@ class MessageController extends Controller
     public function show($id)
     {
         //
-        $data = Message::find($id);
-        return view('admin.message.show', ['data'=>$data]);
+        $data = Comment::find($id);
+        return view('admin.comment.show', ['data'=>$data]);
     }
 
     /**
@@ -75,10 +76,11 @@ class MessageController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $data = Message::find($id);
+        $data = Comment::find($id);
         $data->status = $request->status;
         $data->save();
-        return redirect(route('admin.message.show', ['id'=>$id]))->with('info', 'Comment information updated succesfully');
+        return redirect(route('admin.comment.show', ['id'=>$id]))->with('info', 'Comment information updated succesfully');
+ 
     }
 
     /**
@@ -90,8 +92,8 @@ class MessageController extends Controller
     public function destroy($id)
     {
         //
-        $data = Message::find($id);
+        $data = Comment::find($id);
         $data->delete();
-        return redirect(route('admin.message.index'))->with('warning', 'Message deleted from database');
+        return redirect(route('admin.comment.index'))->with('warning', 'Message deleted from database');
     }
 }

@@ -8,7 +8,7 @@ use App\Models\Image;
 use App\Models\Setting;
 use App\Models\Message;
 use App\Models\Faq;
-
+use App\Models\Comment;
 
 
 use Illuminate\Http\Request;
@@ -31,7 +31,8 @@ class HomeController extends Controller
     {
         $car = Car::find($id);
         $image = Image::where('car_id', $id)->get();
-        return view('home.car_single', ['car' => $car, 'image' => $image]);
+        $reviews = Comment::where('car_id', $id)->where('status', 'True')->get();
+        return view('home.car_single', ['car' => $car, 'image' => $image, 'reviews'=>$reviews]);
     }
     
     //Return vehicles related to a category
@@ -51,7 +52,7 @@ class HomeController extends Controller
         $setting = Setting::first();
         return view('home.contact', ['setting'=>$setting]);
     }
-    //Contact send message
+    //store message
     public function storemessage(Request $request){
         $data = new Message;
         $data->name = $request->input('name');
@@ -72,5 +73,17 @@ class HomeController extends Controller
     public function faq(){
         $data = Faq::all();
         return view('home.faq', ['data'=>$data]);
+    }
+    //store comment
+    public function storecomment(Request $request){
+        $data = new Comment;
+        $data->user_id = auth()->id();
+        $data->car_id = $request->input('car_id');
+        $data->subject = $request->input('subject');
+        $data->review = $request->input('review');
+        $data->rate = $request->input('rate');
+        $data->ip = request()->ip();
+        $data->save();
+        return redirect()->route('car_single', ['id'=>$request->car_id])->with('info', 'Your comment has been sent, Thank You.');
     }
 }

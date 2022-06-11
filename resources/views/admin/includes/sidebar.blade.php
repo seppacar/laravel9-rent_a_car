@@ -40,6 +40,12 @@
                     </div>
                 </div>
             </li>
+            <!-- Nav Item - Reviews -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.comment.index')}}">
+                    <i class="fas fa-fw fa-comment"></i>
+                    <span>Reviews</span></a>
+            </li>
             <!-- Nav Item - Messages -->
             <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.message.index')}}">

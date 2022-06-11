@@ -4,6 +4,41 @@
 
 @section('content')
 
+
+<!-- star rating css -->
+<style>
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.rating > input{ display:none;}
+
+.rating > label {
+  position: relative;
+    width: 1em;
+    font-size: 3vw;
+    color: #1089ff;
+    cursor: pointer;
+}
+.rating > label::before{ 
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
+}
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+.rating > input:checked ~ label:before{
+  opacity:1;
+}
+.rating:hover > input:checked ~ label:before{ opacity: 0.4; }
+
+</style>
+<!-- star rating css -->
+
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -15,8 +50,7 @@
       </div>
     </div>
   </section>
-      
-
+    @include('message')
       <section class="ftco-section ftco-car-details">
     <div class="container">
         <div class="row justify-content-center">
@@ -178,72 +212,63 @@
                           <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
                             <div class="row">
                                      <div class="col-md-7">
-                                         <h3 class="head">23 Reviews</h3>
+                                         <h3 class="head">{{count($reviews)}} Reviews</h3>
+                                         @foreach($reviews as $review)
                                          <div class="review d-flex">
-                                             <div class="user-img" style="background-image: url(/images/person_1.jpg)"></div>
-                                             <div class="desc">
-                                                 <h4>
-                                                     <span class="text-left">Jacob Webb</span>
-                                                     <span class="text-right">14 March 2018</span>
-                                                 </h4>
-                                                 <p class="star">
-                                                     <span>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                     </span>
-                                                     <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-                                                 </p>
-                                                 <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-                                             </div>
-                                         </div>
-                                         <div class="review d-flex">
-                                             <div class="user-img" style="background-image: url(/images/person_2.jpg)"></div>
-                                             <div class="desc">
-                                                 <h4>
-                                                     <span class="text-left">Jacob Webb</span>
-                                                     <span class="text-right">14 March 2018</span>
-                                                 </h4>
-                                                 <p class="star">
-                                                     <span>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                     </span>
-                                                     <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-                                                 </p>
-                                                 <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-                                             </div>
-                                         </div>
-                                         <div class="review d-flex">
-                                             <div class="user-img" style="background-image: url(/images/person_3.jpg)"></div>
-                                             <div class="desc">
-                                                 <h4>
-                                                     <span class="text-left">Jacob Webb</span>
-                                                     <span class="text-right">14 March 2018</span>
-                                                 </h4>
-                                                 <p class="star">
-                                                     <span>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                     </span>
-                                                     <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-                                                 </p>
-                                                 <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-                                             </div>
-                                         </div>
+                                            <div class="user-img" style="background-image: url(/images/person_3.jpg)"></div>
+                                            <div class="desc">
+                                                <h4>
+                                                    <span class="text-left">{{$review->user->name}}</span>
+                                                    <span class="text-right">{{$review->created_at}}</span>
+                                                </h4>
+                                                <p class="star">
+                                                    <span>
+                                                        @for($i = 0; $i < $review->rate; $i++)
+                                                            <i class="ion-ios-star"></i>
+                                                        @endfor
+                                                    </span>
+                                                    <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                                                </p>
+                                                <h5 style:>{{$review->subject}}</h5>
+                                                <p>{{$review->review}}</p>
+                                            </div>
+                                        </div>
+                                         @endforeach
                                      </div>
                                      <div class="col-md-5">
                                          <div class="rating-wrap">
                                              <h3 class="head">Give a Review</h3>
-                                             <div class="wrap">
+                                             <div class="col-md-8 block-9 mb-md-5">                                      
+                                                <form role="form" action="{{route('storecomment')}}" method="post"> 
+                                                  @csrf
+                                                  <input type="hidden" name="car_id" value={{$car->id}}>
+                                                  <div class="form-group">
+                                                    <input type="text" class="form-control" name="subject" placeholder="Subject">
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <textarea id="" cols="30" rows="7" class="form-control" name="review" placeholder="Review"></textarea>
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <div class="rating">
+                                                        <input type="radio" name="rate" value="5" id="5"><label for="5">☆</label>
+                                                        <input type="radio" name="rate" value="4" id="4"><label for="4">☆</label>
+                                                        <input type="radio" name="rate" value="3" id="3"><label for="3">☆</label>
+                                                        <input type="radio" name="rate" value="2" id="2"><label for="2">☆</label>
+                                                        <input type="radio" name="rate" value="1" id="1"><label for="1">☆</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                    @auth
+                                                    <input type="submit" value="Send Review" class="btn btn-primary py-3 px-5">
+                                                    @else
+                                                    <a href="/login">
+                                                    <input type="button" value="To submit a review please login" class="btn btn-primary py-3 px-5">
+                                                    </a>
+                                                    @endauth
+                                                    </div>
+                                                </form>
+                                              
+                                              </div>                                             <div class="wrap">
                                                  <p class="star">
                                                      <span>
                                                          <i class="ion-ios-star"></i>
@@ -364,6 +389,4 @@
       </div>
       </div>
   </section>
-  <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
-
   @endsection

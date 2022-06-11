@@ -9,16 +9,16 @@
       <td>{{$data->id}}</td>
     </tr>
     <tr>
-      <th>Name</th>
-      <td>{{$data->id}}</td>
+      <th>Vehicle</th>
+      <td>{{$data->car->title}}</td>
     </tr>
     <tr>
-      <th>Email</th>
-      <td>{{$data->email}}</td>
+      <th>User Name</th>
+      <td>{{$data->user->name}}</td>
     </tr>
     <tr>
-      <th>Phone</th>
-      <td>{{$data->phone}}</td>
+      <th>User ID</th>
+      <td>{{$data->user->id}}</td>
     </tr>
     <tr>
       <th>IP Address</th>
@@ -29,10 +29,15 @@
       <td>{{$data->subject}}</td>
     </tr>
     <tr>
-      <th>Message</th>
-      <td>{{$data->message}}</td>
+      <th>Review</th>
+      <td>{{$data->review}}</td>
     </tr>
     <tr>
+      <tr>
+        <th>Rating</th>
+        <td>{{$data->rate}}</td>
+      </tr>
+      <tr>
       <th>Status</th>
       <td>{{$data->status}}</td>
     </tr>
@@ -41,14 +46,16 @@
       <td>{{$data->created_at}}</td>
     </tr>
     </table>
+
     <div class="mb-3">
-      <form role="form" action="{{route('admin.message.update', ['id'=>$data->id])}}" method="post"> 
+      <form role="form" action="{{route('admin.comment.update', ['id'=>$data->id])}}" method="post"> 
         @csrf
         <div class="mb-3">
           <label for="status" class="form-label">Status</label>
           <select class="form-control" name="status" id="status">
               <option @if ($data->status == "New") selected @endif>New</option>
               <option @if ($data->status == "Read") selected @endif >Read</option>>
+              <option @if ($data->status == "True") selected @endif >True</option>>
           </select>
       </div>
   <button type="submit" class="btn btn-dark btn-icon-split">
