@@ -24,6 +24,7 @@ Route::get('/vehicle/{id}', [HomeController::class, 'car'])->name('car_single');
 Route::get('/vehicles/{category_id}', [HomeController::class, 'getCars'])->name('car_multiple');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 
 
