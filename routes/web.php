@@ -40,7 +40,7 @@ Route::view('/userlogin', 'home.login');
 Route::view('/userregister', 'home.register');
 Route::get('/userlogout', [HomeController::class, 'logout'])->name('userlogout');
 //admin panel login
-Route::view('/adminlogin', 'admin.login');
+Route::view('/adminlogin', 'admin.login')->name('admin.login');
 Route::post('/adminauth', [HomeController::class, 'adminauth'])->name('admin.auth');
 
 
@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //Admin Panel Routes
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHome::class, 'index'])->name('index');
     //Admin Panel setting route
     Route::get('/setting', [AdminHome::class, 'setting'])->name('setting');
@@ -113,7 +113,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     //Admin User Comment Routes
     Route::prefix('/user')->name('user.')->controller(AdminUserController::class)->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::post('/update/{id}', 'update')->name('update');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/delete/{id}', 'destroy')->name('destroy');
         Route::post('/addrole/{id}', 'addrole')->name('addrole');
