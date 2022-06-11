@@ -86,4 +86,13 @@ class HomeController extends Controller
         $data->save();
         return redirect()->route('car_single', ['id'=>$request->car_id])->with('info', 'Your comment has been sent, Thank You.');
     }
+
+    //Logout controller
+    public function logout(Request $request){
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }
