@@ -88,7 +88,7 @@ class FaqController extends Controller
         $data->answer = $request->answer;
         $data->status = $request->status;
         $data->save();
-        return redirect('admin/faq', ['data'=>$data])->with('info', 'Question entry updated succesfully');
+        return redirect('admin/faq')->with('info', 'Question entry updated succesfully');
     }
 
     /**

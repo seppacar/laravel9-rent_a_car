@@ -40,6 +40,18 @@
                     </div>
                 </div>
             </li>
+            <!-- Nav Item - Messages -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.message.index')}}">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <span>Contact Form Messages</span></a>
+            </li>
+            <!-- Nav Item - FAQ -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.faq.index')}}">
+                    <i class="fas fa-fw fa-question-circle"></i>
+                    <span>FAQ</span></a>
+            </li>
             <!-- Nav Item - Settings -->
             <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.setting')}}">

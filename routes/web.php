@@ -75,17 +75,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     //Admin Panel Message Routes
     Route::prefix('/message')->name('message.')->controller(MessageController::class)->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::get('/update/{id}', 'create')->name('update');
+        Route::post('/update/{id}', 'create')->name('update');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/delete/{id}', 'destroy')->name('destroy');
     });
-    //Admin Faq Message Routes
+    //Admin FAQ Message Routes
     Route::prefix('/faq')->name('faq.')->controller(FaqController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
         Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::get('/update/{id}', 'update')->name('update');
+        Route::post('/update/{id}', 'update')->name('update');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/delete/{id}', 'destroy')->name('destroy');
     });

@@ -9,7 +9,7 @@
         Update Question
     </div>
     <div class="card-body">
-    <form role="form" action="{{route('admin.faq.store')}}"  method="post" enctype='multipart/form-data'> 
+    <form role="form" action="{{route('admin.faq.update', ['id'=>$data->id])}}"  method="post" enctype='multipart/form-data'> 
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Question</label>
