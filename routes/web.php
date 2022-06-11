@@ -38,6 +38,11 @@ Route::post('/storecomment', [HomeController::class, 'storecomment'])->name('sto
 Route::view('/userlogin', 'home.login');
 Route::view('/userregister', 'home.register');
 Route::get('/userlogout', [HomeController::class, 'logout'])->name('userlogout');
+//admin panel login
+Route::view('/adminlogin', 'admin.login');
+Route::post('/adminauth', [HomeController::class, 'adminauth'])->name('admin.auth');
+
+
 
 
 
