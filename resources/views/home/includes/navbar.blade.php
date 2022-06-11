@@ -24,7 +24,7 @@
               @endforeach
              </ul>
          </li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="{{route('faq')}}" class="nav-link">FAQ</a></li>
           <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
         </ul>
       </div>

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Setting;
 use App\Models\Message;
+use App\Models\Faq;
 
 
 
@@ -66,5 +67,10 @@ class HomeController extends Controller
     public function references(){
         $setting = Setting::first();
         return view('home.references', ['setting'=>$setting]);
+    }
+    //FAQ page
+    public function faq(){
+        $data = Faq::all();
+        return view('home.faq', ['data'=>$data]);
     }
 }
