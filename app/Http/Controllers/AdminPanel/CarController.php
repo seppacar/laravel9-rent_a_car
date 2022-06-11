@@ -68,7 +68,7 @@ class CarController extends Controller
         };
         $data->status = $request->status;
         $data->save();
-        return redirect('admin/car');
+        return redirect('admin/car')->with('success', 'New car added to the database succesfully');
     }
 
     /**
@@ -132,7 +132,7 @@ class CarController extends Controller
         };
         $data->status = $request->status;
         $data->save();
-        return redirect('admin/car');
+        return redirect('admin/car')->with('info', 'Car information updated succesfully');
     }
 
     /**
@@ -149,6 +149,6 @@ class CarController extends Controller
             Storage::delete($data->image);
         };
         $data->delete();
-        return redirect('admin/car');
+        return redirect('admin/car')->with('warning', 'Car information deleted from database succesfully');
     }
 }

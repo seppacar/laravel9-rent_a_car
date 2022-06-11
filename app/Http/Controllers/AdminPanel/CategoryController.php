@@ -65,7 +65,7 @@ class CategoryController extends Controller
         };
         $data->status = $request->status;
         $data->save();
-        return redirect('admin/category');
+        return redirect('admin/category')->with('success', 'New Category added to the database succesfully');
     }
 
     /**
@@ -115,7 +115,7 @@ class CategoryController extends Controller
                     $data->image = $request->file('image')->store('images');
                 };                $data->status = $request->status;
                 $data->save();
-                return redirect('admin/category');
+                return redirect('admin/category')->with('info', 'Category information updated succesfully');
     }
 
     /**
@@ -132,6 +132,6 @@ class CategoryController extends Controller
             Storage::delete($data->image);
         };
         $data->delete();
-        return redirect('admin/category');
+        return redirect('admin/category')->with('warning', 'Category information has been deleted from database succesfully');
     }
 }

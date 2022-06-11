@@ -14,6 +14,7 @@
                                         <span class="text">Add New Vehicle</span>
                                     </a>    </div>
     <table class="table table-responsive">
+    @include('message')
     <thead>
         <tr>
         <th scope="col">#</th>
