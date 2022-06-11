@@ -27,7 +27,7 @@
           <li class="nav-item"><a href="{{route('faq')}}" class="nav-link">FAQ</a></li>
           <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">@auth {{auth()->user()->name}} @else Login @endauth</a>
+            <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">@auth {{auth()->user()->name}}@endauth  @guest Login @endguest</a>
              <ul class="dropdown-menu">
               @auth
               <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -35,13 +35,12 @@
               <form role="form" action="/userlogout" method="post"> 
                 <li><a class="dropdown-item" href="userlogout">Logout</a></li>
               </form>
-              @else
+              @endauth
+              @guest
               <li><a class="dropdown-item" href="userlogin">Login</a></li>
               <div class="dropdown-divider"></div>
               <li><a class="dropdown-item" href="userregister">Register</a></li>
-              @endauth
-
-              
+              @endguest
              </ul>
          </li>
         </ul>
