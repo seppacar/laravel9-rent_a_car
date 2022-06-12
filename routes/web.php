@@ -9,10 +9,12 @@ use App\Http\Controllers\AdminPanel\CarController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\AdminPanel\CommentController;
 use App\Http\Controllers\AdminPanel\AdminUserController;
+use App\Http\Controllers\ReservationController;
 
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminPanel\HomeController as AdminHome;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,15 +39,13 @@ Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('sto
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::post('/storecomment', [HomeController::class, 'storecomment'])->name('storecomment');
-Route::view('/userlogin', 'home.login');
+//userlogin register
+Route::view('/userlogin', 'home.login')->name('userlogin');
 Route::view('/userregister', 'home.register');
 Route::get('/userlogout', [HomeController::class, 'logout'])->name('userlogout');
 //admin panel login
 Route::view('/adminlogin', 'admin.login')->name('admin.login');
 Route::post('/adminauth', [HomeController::class, 'adminauth'])->name('admin.auth');
-
-
-
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -59,6 +59,17 @@ Route::middleware('auth')->group(function(){
         Route::get('/', 'index')->name('profile');
         Route::get('/reviews', 'reviews')->name('reviews');
         Route::get('/reviews/destroy/{id}', 'destroyReview')->name('reviews.destroy');
+        Route::get('/reservations', 'reservations')->name('reservations');
+        Route::get('/reservations/destroy/{id}', 'destroyReservation')->name('reservation.destroy');
+
+    });
+    //Reservation Routes
+    Route::prefix('reservation')->prefix('reservation')->name('reservation.')->controller(ReservationController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create/{id}', 'create')->name('create');
+        Route::post('/make', 'makeReservation')->name('make');
+        Route::get('/checkout/{res_id}', 'checkout')->name('checkout');
+        Route::post('/checkout/process', 'processCheckout')->name('checkout.process');
 
     });
 //Admin Panel Routes
