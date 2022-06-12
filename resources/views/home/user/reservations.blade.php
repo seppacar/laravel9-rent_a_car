@@ -10,8 +10,8 @@
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
         <div class="col-md-9 ftco-animate pb-5">
-            <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>User Profile<i class="ion-ios-arrow-forward"></i></span></p>
-          <h1 class="mb-3 bread">User Profile</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span> User Profile <i class="ion-ios-arrow-forward"></i></span> <span>Reservations </span></p>
+          <h1 class="mb-3 bread">My Reservations</h1>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
             <h3 class="text-xl font-medium">User Menu</h3>
             <div class="row mb-5">
                 <div class="col-md-12">
-                  <a href="http://127.0.0.1:8000/userpanel">
+                  <a href="{{route('userpanel.profile')}}">
                     <div class="border w-75 p-2 rounded mb-2 d-flex  dropdown-item">
                         <p>
                           <i class="fas icon-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -34,7 +34,7 @@
                   </a>
                 </div>
                 <div class="col-md-12">
-                  <a href="http://127.0.0.1:8000/userpanel">
+                  <a href="{{route('userpanel.reservations')}}">
                     <div class="border w-75 p-2 rounded mb-2 d-flex  dropdown-item">
                         <p>
                           <i class="fas icon-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -71,13 +71,13 @@
             <table class="table table-sm table-bordered table-striped">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Product</th>
+                <th scope="col">Vehicle</th>
                 <th scope="col">Pick Up Date</th>
                 <th scope="col">Drop Off Date</th>
                 <th scope="col">Days</th>
                 <th scope="col">Price</th>
                 <th scope="col">Note</th>
+                <th scope="col">Reservation Date</th>
                 <th scope="col">Status</th>
                 <th scope="col">Cancel Order</th>
                 </tr>
@@ -85,14 +85,15 @@
             <tbody>
             @foreach($data as $rs)
                 <tr>
-                <td>{{$rs->id}}</td>
                 <td><a href="{{route('car_single', ['id'=>$rs->car->id])}}">{{$rs->car->title}}</a></td>
                 <td>{{$rs->rezdate}}, {{$rs->reztime}}</td>
                 <td>{{$rs->returndate}}, {{$rs->returntime}}</td>
                 <td>{{$rs->days}}</td>
                 <td>{{$rs->price}}</td>
                 <td>{{$rs->note}}</td>
-                <td>{{$rs->status}}</td>
+                <td>{{$rs->created_at}}</td>
+                <td>@if($rs->status == 'Payment Failed') <a href="{{route('reservation.checkout', ['res_id'=>$rs->id])}}"> <button type="button" class="btn btn-success">Checkout</button> </a>
+                  @endif {{$rs->status}}</td>
                 <td><a href="{{route('userpanel.reservation.destroy', ['id'=>$rs->id])}}" class="btn btn-danger"><i class="icon-trash"></i></a></td>
                 </tr>
             @endforeach

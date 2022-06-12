@@ -47,7 +47,7 @@ class ReservationController extends Controller
 
     public function processCheckout(Request $request){
         //Assuming card check from payment processor is valid
-        $cardcheck = 'False';
+        $cardcheck = 'True';
         
         $data = Reservation::find($request->res_id);
         if ($cardcheck == 'True'){
