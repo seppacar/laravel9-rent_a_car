@@ -30,10 +30,10 @@
             <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">@auth {{auth()->user()->name}}@endauth  @guest Login @endguest</a>
              <ul class="dropdown-menu">
               @auth
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="{{route('userpanel.profile')}}">Profile</a></li>
               <div class="dropdown-divider"></div>
-              <form role="form" action="/userlogout" method="post"> 
-                <li><a class="dropdown-item" href="userlogout">Logout</a></li>
+              <form role="form" action="{{route('userlogout')}}" method="post"> 
+                <li><a class="dropdown-item" href="{{route('userlogout')}}">Logout</a></li>
               </form>
               @endauth
               @guest

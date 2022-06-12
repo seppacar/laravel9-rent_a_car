@@ -1,12 +1,12 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Contact Form Messages')
+@section('title', 'Vehicle Reviews')
 
 @section('content')
 
 <div class="card shadow">
     <div class="card-header py-3">
-        <h5 class="m-0 font-weight-bold text-primary">Contact Form Messages</h5>
+        <h5 class="m-0 font-weight-bold text-primary">User Vehicle Reviews</h5>
     </div>
     <table class="table table-responsive">
     @include('message')

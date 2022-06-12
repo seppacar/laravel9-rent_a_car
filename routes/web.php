@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminPanel\MessageController;
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\FaqController;
@@ -51,6 +52,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+//USER AUTH CONTROL
+Route::middleware('auth')->group(function(){
+    //********** USER ROUTES ********************
+    Route::prefix('userpanel')->prefix('userpanel')->name('userpanel.')->controller(UserController::class)->group(function () {
+        Route::get('/', 'index')->name('profile');
+        Route::get('/reviews', 'reviews')->name('reviews');
+        Route::get('/reviews/destroy/{id}', 'destroyReview')->name('reviews.destroy');
+
+    });
 //Admin Panel Routes
 Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHome::class, 'index'])->name('index');
@@ -117,7 +127,6 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/delete/{id}', 'destroy')->name('destroy');
         Route::post('/addrole/{id}', 'addrole')->name('addrole');
         Route::get('/destroyrole/{uid}/{rid}', 'destroyrole')->name('destroyrole');
-
-
     });
+});
 });
