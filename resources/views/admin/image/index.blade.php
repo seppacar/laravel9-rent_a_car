@@ -18,7 +18,7 @@
 
 </div>
     <h5 class="m-4 font-weight-bold text-primary">Images for {{$car->title}}</h5>
-    <table class="table table-responsive">
+    <table class="table table-responsive table-striped">
     <thead>
         <tr>
         <th scope="col">#</th>

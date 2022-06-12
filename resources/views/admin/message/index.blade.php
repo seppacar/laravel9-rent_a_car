@@ -8,7 +8,7 @@
     <div class="card-header py-3">
         <h5 class="m-0 font-weight-bold text-primary">Contact Form Messages</h5>
     </div>
-    <table class="table table-responsive">
+    <table class="table table-responsive table-bordered table-striped">
     @include('message')
     <thead>
         <tr>

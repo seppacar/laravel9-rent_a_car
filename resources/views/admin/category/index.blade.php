@@ -13,7 +13,7 @@
                                         </span>
                                         <span class="text">Add New Category</span>
                                     </a>    </div>
-    <table class="table table-responsive">
+    <table class="table table-responsive table-bordered table-striped">
     @include('message')
     <thead>
         <tr>
