@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Category List')
+@section('title', 'Edit Question')
 
 @section('content')
 <!--TODO: Add Image of the category if present -->

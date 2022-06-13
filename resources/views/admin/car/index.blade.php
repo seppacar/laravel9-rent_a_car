@@ -49,7 +49,7 @@
                 No Image
             @endif
         </td>
-        <td><a href="{{route('admin.image.index', ['pid' => $rs->id])}}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100, height=700')"><img src="/img/bootstrap-icons/card-image.svg" width="32" height="32"> </a></td>
+        <td><a href="{{route('admin.image.index', ['pid' => $rs->id])}}" onclick="return !window.open(this.href, '', 'top=50 left=100 width=550, height=700')"><img src="/img/bootstrap-icons/card-image.svg" width="32" height="32"> </a></td>
         <td>{{$rs->detail}}</td>
         <td>{{$rs->price}}</td>
         <td>TODO: SPECIFICATIONS POPUP</td>

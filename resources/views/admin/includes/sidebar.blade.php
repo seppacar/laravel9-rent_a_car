@@ -40,6 +40,18 @@
                     </div>
                 </div>
             </li>
+            <!-- Nav Item - Reservation Orders -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.reservation.index')}}">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Reservations</span></a>
+            </li>
+            <!-- Nav Item - Users -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.user.index')}}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Users</span></a>
+            </li>
             <!-- Nav Item - Reviews -->
             <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.comment.index')}}">

@@ -35,7 +35,7 @@
         </td>
         <td>{{$rs->status}}</td>
         <td>{{$rs->created_at}}</td>
-        <td><a href="{{route('admin.user.show', ['id'=>$rs->id])}}" class="btn btn-info btn-circle"><i class="fas fa-info"></i></a></td>
+        <td><a href="{{route('admin.user.show', ['id'=>$rs->id])}}"  onclick="return !window.open(this.href, '', 'top=50 left=100 width=325, height=500')" class="btn btn-info btn-circle"><i class="fas fa-info"></i></a></td>
         <td><a href="{{route('admin.user.destroy', ['id'=>$rs->id])}}" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a></td>
         </tr>
     @endforeach

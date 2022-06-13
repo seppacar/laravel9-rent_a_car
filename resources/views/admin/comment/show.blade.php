@@ -1,6 +1,6 @@
 @extends ('layouts.imagebase')
 
-@section('title', 'Add Image')
+@section('title', 'Review Details')
     @include('message')
     <h5 class="m-4 font-weight-bold text-primary">Message Details</h5>
     <table class="table table-responsive table-striped">
