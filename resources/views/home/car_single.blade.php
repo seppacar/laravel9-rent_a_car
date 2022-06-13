@@ -207,7 +207,7 @@
                           </div>
 
                           <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-                            <p>{{$car->detail}}</p>
+                            <p>{!!$car->detail!!}</p>
                           </div>
 
                           <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">

@@ -25,6 +25,7 @@ Route::get('/welcome', function () {
 //Front Page Routes
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/vehicle/{id}', [HomeController::class, 'car'])->name('car_single');
+Route::get('/vehicles', [HomeController::class, 'carAll'])->name('car_all');
 Route::get('/vehicles/{category_id}', [HomeController::class, 'getCars'])->name('car_multiple');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

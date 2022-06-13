@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\User;
 use App\Models\Setting;
 use App\Models\Message;
 use App\Models\Faq;
@@ -38,6 +39,18 @@ class HomeController extends Controller
         $image = Image::where('car_id', $id)->get();
         $reviews = Comment::where('car_id', $id)->where('status', 'True')->get();
         return view('home.car_single', ['car' => $car, 'image' => $image, 'reviews'=>$reviews]);
+    }
+    //All cars
+    public function carAll()
+    {
+        $car = Car::where('status', 'True')->paginate(9);
+        return view('home.car_all', ['car' => $car]);
+    }
+
+    //Get car count
+    public static function getCarCount()
+    {
+        echo Car::where('status', 'True')->count();
     }
     
     //Return vehicles related to a category
@@ -118,5 +131,9 @@ class HomeController extends Controller
         return back()->with([
             'error' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
+    }
+
+    public static function getUserCount(){
+        echo User::all()->count();
     }
 }

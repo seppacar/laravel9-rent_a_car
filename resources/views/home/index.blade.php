@@ -31,37 +31,7 @@
           <div class="row no-gutters">
               <div class="col-md-12	featured-top">
                   <div class="row no-gutters">
-                        <div class="col-md-4 d-flex align-items-center">
-                            <form action="#" class="request-form ftco-animate bg-primary">
-                        <h2>Make your trip</h2>
-                              <div class="form-group">
-                                  <label for="" class="label">Pick-up location</label>
-                                  <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
-                              </div>
-                              <div class="form-group">
-                                  <label for="" class="label">Drop-off location</label>
-                                  <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
-                              </div>
-                              <div class="d-flex">
-                                  <div class="form-group mr-2">
-                          <label for="" class="label">Pick-up date</label>
-                          <input type="text" class="form-control" id="book_pick_date" placeholder="Date">
-                        </div>
-                        <div class="form-group ml-2">
-                          <label for="" class="label">Drop-off date</label>
-                          <input type="text" class="form-control" id="book_off_date" placeholder="Date">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="" class="label">Pick-up time</label>
-                      <input type="text" class="form-control" id="time_pick" placeholder="Time">
-                    </div>
-                      <div class="form-group">
-                        <input type="submit" value="Rent A Car Now" class="btn btn-secondary py-3 px-4">
-                      </div>
-                          </form>
-                        </div>
-                        <div class="col-md-8 d-flex align-items-center">
+                        <div class="col-md-12 d-flex align-items-center">
                             <div class="services-wrap rounded-right w-100">
                                 <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
                                 <div class="row d-flex mb-4">
@@ -90,7 +60,7 @@
                               </div>      
                             </div>
                           </div>
-                          <p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+                          <p><a href="{{route('car_all')}}" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
                             </div>
                         </div>
                     </div>
@@ -144,7 +114,7 @@
 
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
               <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-              <p><a href="#" class="btn btn-primary py-3 px-4">Search Vehicle</a></p>
+              <p><a href="{{route('car_all')}}" class="btn btn-primary py-3 px-4">Search Vehicle</a></p>
             </div>
                   </div>
               </div>
@@ -285,63 +255,6 @@
     </div>
   </section>
 
-  <section class="ftco-section">
-    <div class="container">
-      <div class="row justify-content-center mb-5">
-        <div class="col-md-7 heading-section text-center ftco-animate">
-            <span class="subheading">Blog</span>
-          <h2>Recent Blog</h2>
-        </div>
-      </div>
-      <div class="row d-flex">
-        <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry justify-content-end">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-            </a>
-            <div class="text pt-4">
-                <div class="meta mb-3">
-                <div><a href="#">Oct. 29, 2019</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-              </div>
-              <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-              <p><a href="#" class="btn btn-primary">Read more</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry justify-content-end">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-            </a>
-            <div class="text pt-4">
-                <div class="meta mb-3">
-                <div><a href="#">Oct. 29, 2019</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-              </div>
-              <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-              <p><a href="#" class="btn btn-primary">Read more</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-            </a>
-            <div class="text pt-4">
-                <div class="meta mb-3">
-                <div><a href="#">Oct. 29, 2019</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-              </div>
-              <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-              <p><a href="#" class="btn btn-primary">Read more</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>	
 
   <section class="ftco-counter ftco-section img bg-light" id="section-counter">
           <div class="overlay"></div>
@@ -358,7 +271,9 @@
         <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
           <div class="block-18">
             <div class="text text-border d-flex align-items-center">
-              <strong class="number" data-number="1090">0</strong>
+              <strong class="number" data-number="@php
+              echo App\Http\Controllers\HomeController::getCarCount();
+          @endphp">0</strong>
               <span>Total <br>Cars</span>
             </div>
           </div>
@@ -366,7 +281,9 @@
         <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
           <div class="block-18">
             <div class="text text-border d-flex align-items-center">
-              <strong class="number" data-number="2590">0</strong>
+              <strong class="number" data-number="@php
+              echo App\Http\Controllers\HomeController::getUserCount();
+          @endphp">0</strong>
               <span>Happy <br>Customers</span>
             </div>
           </div>

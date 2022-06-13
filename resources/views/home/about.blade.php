@@ -25,7 +25,7 @@
                   <div class="col-md-6 wrap-about ftco-animate">
             <div class="heading-section heading-section-white pl-md-5">
                 <span class="subheading">About us</span>
-              <h2 class="mb-4">Welcome to RENT ACAR</h2>
+              <h2 class="mb-4">Welcome to rentACAR</h2>
             <p>{!! $about !!}</p>
               <p><a href="#" class="btn btn-primary py-3 px-4">Search Vehicle</a></p>
             </div>
