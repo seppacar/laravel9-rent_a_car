@@ -41,31 +41,6 @@ Route::get('/userlogout', [HomeController::class, 'logout'])->name('userlogout')
 Route::view('/adminlogin', 'admin.login')->name('admin.login');
 Route::post('/adminauth', [HomeController::class, 'adminauth'])->name('admin.auth');
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-//USER AUTH CONTROL
-Route::middleware('auth')->group(function(){
-    //********** USER ROUTES ********************
-    Route::prefix('userpanel')->prefix('userpanel')->name('userpanel.')->controller(UserController::class)->group(function () {
-        Route::get('/', 'index')->name('profile');
-        Route::get('/reviews', 'reviews')->name('reviews');
-        Route::get('/reviews/destroy/{id}', 'destroyReview')->name('reviews.destroy');
-        Route::get('/reservations', 'reservations')->name('reservations');
-        Route::get('/reservations/destroy/{id}', 'destroyReservation')->name('reservation.destroy');
-
-    });
-    //Reservation Routes
-    Route::prefix('reservation')->prefix('reservation')->name('reservation.')->controller(ReservationController::class)->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/create/{id}', 'create')->name('create');
-        Route::post('/make', 'makeReservation')->name('make');
-        Route::get('/checkout/{res_id}', 'checkout')->name('checkout');
-        Route::post('/checkout/process', 'processCheckout')->name('checkout.process');
-
-    });
 //Admin Panel Routes
 Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [Admin\HomeController::class, 'index'])->name('index');
@@ -142,4 +117,29 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/delete/{id}', 'destroy')->name('destroy');
     });
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+//USER AUTH CONTROL
+Route::middleware('auth')->group(function(){
+    //********** USER ROUTES ********************
+    Route::prefix('userpanel')->prefix('userpanel')->name('userpanel.')->controller(UserController::class)->group(function () {
+        Route::get('/', 'index')->name('profile');
+        Route::get('/reviews', 'reviews')->name('reviews');
+        Route::get('/reviews/destroy/{id}', 'destroyReview')->name('reviews.destroy');
+        Route::get('/reservations', 'reservations')->name('reservations');
+        Route::get('/reservations/destroy/{id}', 'destroyReservation')->name('reservation.destroy');
+
+    });
+    //Reservation Routes
+    Route::prefix('reservation')->prefix('reservation')->name('reservation.')->controller(ReservationController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create/{id}', 'create')->name('create');
+        Route::post('/make', 'makeReservation')->name('make');
+        Route::get('/checkout/{res_id}', 'checkout')->name('checkout');
+        Route::post('/checkout/process', 'processCheckout')->name('checkout.process');
+
+    });
 });
