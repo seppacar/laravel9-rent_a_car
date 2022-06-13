@@ -32,7 +32,7 @@ class ReservationController extends Controller
         $data->returndate = $drop_datetime->format("Y/m/d");
         $data->returntime = $drop_datetime->format("h:i");
         $data->days = $pick_datetime->diffInDays($drop_datetime);
-        $data->price = $data->days * 12.5; ##pull car price
+        $data->price = $data->days * $data->car->price;
         $data->amount = 1;
         $data->ip = $_SERVER['REMOTE_ADDR'];
         $data->note = $request->note;
