@@ -51,7 +51,7 @@ class ReservationController extends Controller
         
         $data = Reservation::find($request->res_id);
         if ($cardcheck == 'True'){
-            $data->status = 'Payment Successful';
+            $data->status = 'Payment Succesful';
             $data->save();
             return redirect()->route('userpanel.reservations')->with('success', 'Checkout Complete! Your Reservation Order Has Been Placed');
         }
