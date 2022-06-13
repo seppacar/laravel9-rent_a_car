@@ -89,7 +89,7 @@
                 <td>{{$rs->rezdate}}, {{$rs->reztime}}</td>
                 <td>{{$rs->returndate}}, {{$rs->returntime}}</td>
                 <td>{{$rs->days}}</td>
-                <td>{{$rs->price}}</td>
+                <td>{{$rs->price}} TL</td>
                 <td>{{$rs->note}}</td>
                 <td>{{$rs->created_at}}</td>
                 <td>@if($rs->status == 'Payment Failed') <a href="{{route('reservation.checkout', ['res_id'=>$rs->id])}}"> <button type="button" class="btn btn-success">Checkout</button> </a>

@@ -5,14 +5,17 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use App\Models\Reservation;
+use Carbon\Carbon;
 
 
 class HomeController extends Controller
 {
     //
     public function index()
-    {
-        return view('admin.index');
+    {   
+        $data = Reservation::where('Status', 'Payment Succesful')->get();
+        return view('admin.index', ['data'=>$data]);
     }
     // Setting page
     public function setting()
@@ -52,5 +55,22 @@ class HomeController extends Controller
         if ($request->status){$data->status = $request->status;};
         $data->save();
         return view('admin.setting', ['data' => $data]);
+    }
+
+    public static function earningsDaily(){
+        $data = Reservation::where('Status', 'Confirmed')->whereDate('created_at', Carbon::today())->get();
+        echo $data->sum('price');
+    }
+    public static function earningsMonthly(){
+        $data = Reservation::where('Status', 'Confirmed')->whereMonth('created_at', Carbon::now()->month);
+        echo $data->sum('price');
+    }
+    public static function pendingOrders(){
+        $data = Reservation::where('Status', 'Payment Succesful');
+        echo $data->sum('price');
+    }
+    public static function newReservations(){
+        $data = Reservation::where('Status', 'Confirmed')->whereDate('created_at', Carbon::today())->get();
+        echo $data->sum('price');
     }
 }

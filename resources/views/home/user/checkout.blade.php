@@ -40,7 +40,7 @@
 
                     <p class="price ml-auto">Daily Price:</p> {{$data->car->price}} /Day</p>
 
-                    <p class="price ml-auto">Total Price:</p> {{$data->price}}<p>
+                    <p class="price ml-auto">Total Price:</p> {{$data->price}} TL<p>
 
                 </div>
             </div>
