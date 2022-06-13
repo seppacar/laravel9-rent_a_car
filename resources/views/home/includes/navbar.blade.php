@@ -11,8 +11,6 @@
           <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About Us</a></li>
           <li class="nav-item"><a href="{{route('references')}}" class="nav-link">References</a></li>
-          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-          <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Cars</a>
              <ul class="dropdown-menu">

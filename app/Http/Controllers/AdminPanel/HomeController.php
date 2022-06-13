@@ -67,7 +67,7 @@ class HomeController extends Controller
     }
     public static function pendingOrders(){
         $data = Reservation::where('Status', 'Payment Succesful');
-        echo $data->sum('price');
+        echo $data->count();
     }
     public static function newReservations(){
         $data = Reservation::where('Status', 'Confirmed')->whereDate('created_at', Carbon::today())->get();

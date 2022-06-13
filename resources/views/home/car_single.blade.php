@@ -1,6 +1,7 @@
 @extends('layouts.frontbase')
 
-@section('title', 'Test title')
+@section('title', $car->title)
+@section('keywords',$car->keywords)
 
 @section('content')
 

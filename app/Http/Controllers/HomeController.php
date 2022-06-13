@@ -20,6 +20,11 @@ class HomeController extends Controller
         $car = Car::limit(6)->get();
         return view('home.index', ['car' => $car]);
     }
+    // Return setting data staticly
+    public static function getSetting(){
+        $setting = Setting::first();
+        return $setting;
+    }
 
     //Return Main Category List
     public static function mainCategoryList(){
