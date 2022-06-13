@@ -92,8 +92,9 @@
                 <td>{{$rs->price}} TL</td>
                 <td>{{$rs->note}}</td>
                 <td>{{$rs->created_at}}</td>
-                <td>@if($rs->status == 'Payment Failed') <a href="{{route('reservation.checkout', ['res_id'=>$rs->id])}}"> <button type="button" class="btn btn-success">Checkout</button> </a>
-                  @endif {{$rs->status}}</td>
+                <td>@if($rs->status == 'Waiting Payment') <a href="{{route('reservation.checkout', ['res_id'=>$rs->id])}}"> <button type="button" class="btn btn-success">Checkout</button> </a>
+                  @endif @if($rs->status == 'Payment Failed') <a href="{{route('reservation.checkout', ['res_id'=>$rs->id])}}"> <button type="button" class="btn btn-success">Checkout</button> </a>
+                  @endif  {{$rs->status}}</td>
                 <td><a href="{{route('userpanel.reservation.destroy', ['id'=>$rs->id])}}" class="btn btn-danger"><i class="icon-trash"></i></a></td>
                 </tr>
             @endforeach

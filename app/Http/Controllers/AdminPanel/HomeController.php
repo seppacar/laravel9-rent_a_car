@@ -30,7 +30,7 @@ class HomeController extends Controller
     }
     public function settingUpdate(Request $request){
         $data = Setting::first();
-        
+        if ($request->title){$data->title = $request->title;};
         if ($request->keywords){$data->keywords = $request->keywords;};
         if ($request->description){$data->description = $request->description;};
         if ($request->company){$data->company = $request->company;};

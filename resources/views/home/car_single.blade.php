@@ -73,8 +73,8 @@
                     <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-dashboard"></span></div>
                     <div class="text">
                       <h3 class="heading mb-0 pl-3">
-                          Mileage
-                          <span>40,000</span>
+                          Horsepower
+                          <span>{{$car->horsepower}}hp</span>
                       </h3>
                   </div>
               </div>

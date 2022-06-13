@@ -77,10 +77,6 @@
           <div class="form-group">
             <input type="submit" value="Rent A Car Now" class="btn btn-secondary py-3 px-4">
           </div>
-          <div class="form-group">
-            <label for="" class="label">Total Price:</label>
-            <input type="text" class="form-control" value="{{$car->price}} TL" autocomplete="off" disabled>
-          </div>
               </form>
                 </div>
       </div>
