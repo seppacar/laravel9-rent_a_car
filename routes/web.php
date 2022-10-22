@@ -35,7 +35,7 @@ Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::post('/storecomment', [HomeController::class, 'storecomment'])->name('storecomment');
 //userlogin register
 Route::view('/userlogin', 'home.login')->name('userlogin');
-Route::view('/userregister', 'home.register');
+Route::view('/userregister', 'home.register')->name('userregister');
 Route::get('/userlogout', [HomeController::class, 'logout'])->name('userlogout');
 //admin panel login
 Route::view('/adminlogin', 'admin.login')->name('admin.login');

@@ -35,9 +35,9 @@
               </form>
               @endauth
               @guest
-              <li><a class="dropdown-item" href="userlogin">Login</a></li>
+              <li><a class="dropdown-item" href="{{route('userlogin')}}">Login</a></li>
               <div class="dropdown-divider"></div>
-              <li><a class="dropdown-item" href="userregister">Register</a></li>
+              <li><a class="dropdown-item" href="{{route('userregister')}}">Register</a></li>
               @endguest
              </ul>
          </li>
